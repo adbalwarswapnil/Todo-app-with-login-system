@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Student Log Management</title>
+    
+</head>
+<style>
+  body {
+   
+    background-image: url("/static/images/page.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+  }
+  .form {
+    background-color: lightgray;
+    
+  }
+  .fa {
+    padding: 5px;
+    font-size: 28px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  
+  .fa-linkedin {
+    background: #007bb5;
+    color: white;
+  }
+  
+  .fa-github {
+    background: black;
+    color: white;
+  }
+  
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+
+  .alert {
+    padding: 20px;
+    background-color:#2196F3;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+  
+</style>
+<body >
+  
+  {% csrf_token %}
+    <!- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="/">
+          <img src="{% static 'images/s.jpg' %}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+          &nbsp; Student Log Management</a>
+        
+      
+        <div class=" navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+              <a class="nav-link" href="/" tabindex="-1">Home</a>
+            </li>
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+              <button class="btn btn-dark dropdown-toggle ml-2 mr-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hey,{{ user.first_name }}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="https://todowithlogin.herokuapp.com/todo_list/show_todo">My todo list</a>
+                <a class="dropdown-item" href="https://todowithlogin.herokuapp.com/todo_list">Add Task</a>
+                <a class="dropdown-item" href="https://todowithlogin.herokuapp.com/accounts/logout">logout</a>
+              </div>
+            </div>
+            <!--
+            <li class="nav-text">
+              <a class="nav-link disabled"  tabindex="-1">Hey,{{ user.first_name }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:8000/accounts/logout" tabindex="-1">logout</a>
+            </li>
+            -->
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="https://todowithlogin.herokuapp.com/accounts/login" tabindex="-1">login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://todowithlogin.herokuapp.com/accounts/register" tabindex="-1">Register</a>
+            </li>
+            {% endif %}
+            
+          </ul>
+  
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}
+        
+        {% endblock %}
+    </div>
+    <div style="text-align: center;" class="position-sticky mt-5" >
+        <p>About us</p>
+        <a href="https://www.facebook.com/swapnil.adbalwar/" class="fa fa-facebook"></a>
+        <a href="https://twitter.com/Mr_Swapnil_?s=09" class="fa fa-twitter"></a>
+        <a href="https://www.linkedin.com/in/swapnil-adbalwar-8522a216b" class="fa fa-linkedin"></a>
+        <a href="https://github.com/adbalwarswapnil" class="fa fa-github"></a>
+        <a href="https://instagram.com/mr._.swapnil_?igshid=jvdrmohxiy0b" class="fa fa-instagram"></a>
+        <p><br>Thank you for visiting our website</p><br>
+              <p style="text-align: center;">&copy swapnil 2020  <a href="/">All Rights Reserved</a></p>
+          </div>
+      
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+      
+  </body>
+  </html>

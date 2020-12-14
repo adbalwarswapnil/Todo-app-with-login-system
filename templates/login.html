@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<style>
+	p{
+		font-family: 'Rock Salt', sans-serif;
+		font-size: 17px;
+		font-weight: 700;
+	  }
+	  
+	  .pad50{
+		padding-top: 50px;
+	  }
+	  
+	  .button {
+	  
+		display: inline-block;
+		height: 40px;
+		line-height: 40px;
+		padding-right: 30px;
+		padding-left: 70px;
+		position: relative;
+		background-color:rgb(0,0,0);
+		color:rgb(255,255,255);
+		text-decoration: none;
+		text-transform: none
+	  }
+	  
+	  .button:hover{
+		text-decoration: none;
+		color: #fff;
+		text-shadow: none;
+	  }
+	  
+	  .button p{font-size: 18px;}
+	  .button span {
+		position: absolute;
+		left: 2px;
+		width: 50px;
+		font-size:30px;
+		-webkit-border-top-left-radius: 5px;
+	 	-webkit-border-bottom-left-radius: 5px;
+	  	-moz-border-radius-topleft: 5px;
+	  	-moz-border-radius-bottomleft: 5px;
+	  	border-top-left-radius: 5px;
+	  	border-bottom-left-radius: 5px;
+	  	border-right: 1px solid  rgba(0,0,0,0.15);
+		text-decoration: none;
+	  }
+	  
+	  .button.twitter {
+		background: #00acee;
+	  }
+	  
+	  .button.facebook {
+	   background: #3b5998;
+	  }
+	  
+	  .button.google-plus{
+		background: #db4a39;
+	  }
+	  
+	  .button.linkedin {
+		background: #0e76a8;
+	  }
+	  
+	  
+	  .button.github{
+		background: #171515;
+	  }
+	  
+	.center {
+		text-align: center;
+		margin-top: 30px;
+	  }
+	.mt{
+		margin-top: 10px;
+	}
+    body{
+        background-color: whitesmoke;
+    }
+    .centered-form{
+        margin-top: 60px;
+    }
+    
+    .centered-form .panel{
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+    }
+</style>
+<body>
+    
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+    <div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h3 class="panel-title">Login</h3>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form role="form" action="login" method="POST"> 
+			    			{% csrf_token %}
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			                            <input type="text" name="username" id="username" class="form-control input-sm" placeholder="username">
+			    					</div>
+			    				</div>
+			    
+			    			
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+			    					</div>
+			    				</div>
+			    
+			    			
+			    			
+			    			<input type="submit" value="Login" class="btn btn-info btn-block">
+			    		
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+	</div>
+	<h4 style="text-align: center; margin-top: 20px;"><b>OR login with</b></h4>
+	<div class="center" >
+		{% load socialaccount %}
+		{% providers_media_js %}
+		
+			<a href="{% provider_login_url "facebook" method="js_sdk" %}"  class="button facebook mt"><span><i class="fa fa-facebook" ></i></span><p>Facebook</p></a>						
+			<a href="{% provider_login_url "twitter" %}" target="_blank" class="button twitter mt"><span><i class="fa fa-twitter" ></i></i></span><p>Twitter</p></a>
+			<a href="{% provider_login_url "google" %}" class="button google-plus mt"><span><i class="fa fa-google-plus" ></i></span><p>Google +</p></a>
+			<a href="{% provider_login_url "github" %}"  class="button github mt"><span><i class="fa fa-github"></i></span><p>Github</p></a>					
+			<a href="{% provider_login_url "linkedin" %}" class="button linkedin mt"><span><i class="fa fa-linkedin" ></i></span><p>Linkedin</p></a>
+	</div>
+	<div>
+		
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
