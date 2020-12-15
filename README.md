@@ -8,7 +8,7 @@
 git clone https://github.com/adbalwarswapnil/Todo-app-with-login-system.git 
 ```
 ## Live Demo
-**This project is uploaded on heroku cloud. [Click here](https://todowithlogin.herokuapp.com/) for live demo**
+**This project is uploaded on heroku cloud. [Click here](https://todowithlogin.herokuapp.com/) for live demo.**
 ## Features
 
 1. Login System
