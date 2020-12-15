@@ -2,7 +2,7 @@
 
 **This Todo List web app made with Python-Django framework. In this web app you can create your own todo list and download it in pdf,word and excel format but for that you have to login, for login you can also use user social media accounts such as google,facebook,twitter,github,etc.**
 
-## For using this project first thing you need to do to use this project is to clone it using the following command - 
+## For using this project first thing you need to do is clone it using the following command - 
 
 ``` 
 git clone https://github.com/adbalwarswapnil/Todo-app-with-login-system.git 
